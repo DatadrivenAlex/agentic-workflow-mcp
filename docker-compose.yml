@@ -1,0 +1,14 @@
+services:
+  workflow:
+    build: .
+    environment:
+      LLM_PROVIDER: stub
+      MEMORY_DIR: /app/.memory
+      LOG_LEVEL: INFO
+      MAX_STEPS: "8"
+    volumes:
+      - workflow-memory:/app/.memory
+    command: ["agentic-workflow", "demo"]
+
+volumes:
+  workflow-memory:

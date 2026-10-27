@@ -1,0 +1,41 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "agentic-workflow-mcp"
+version = "0.1.0"
+description = "Multi-agent orchestration with a LangGraph supervisor, a CrewAI-shaped crew, in-process MCP tools, and short- and long-term memory."
+readme = "README.md"
+requires-python = ">=3.11"
+license = "MIT"
+authors = [{ name = "Alexandru Cojocari" }]
+keywords = ["langgraph", "mcp", "agents", "crewai", "memory"]
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Operating System :: OS Independent",
+]
+dependencies = [
+  "langgraph>=1.0,<2",
+  "pydantic>=2.6,<3",
+  "python-dotenv>=1.0,<2",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0"]
+
+[project.scripts]
+agentic-workflow = "agentic_workflow_mcp.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/DatadrivenAlex/agentic-workflow-mcp"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+addopts = "-q"
